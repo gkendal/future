@@ -1,0 +1,59 @@
+{
+  "name": "future",
+  "private": true,
+  "workspaces": [
+    "./apps/*",
+    "./packages/*"
+  ],
+  "scripts": {
+    "native": "cd apps/expo && pnpm start",
+    "native:prebuild": "cd apps/expo && pnpm prebuild",
+    "ios": "cd apps/expo && pnpm ios",
+    "android": "cd apps/expo && pnpm android",
+    "watch": "ultra -r --no-pretty --concurrency 400 watch",
+    "vercel:install": "pnpm install",
+    "web": "pnpm build && cd apps/next && pnpm next",
+    "web:extract": "DISABLE_EXTRACTION=false pnpm --filter next-app dev",
+    "web:prod": "pnpm --filter next-app build",
+    "web:prod:serve": "pnpm --filter next-app serve",
+    "postinstall": "pnpm check-tamagui && pnpm build",
+    "build": "pnpm -r --filter '!next-app' run build",
+    "upgrade:tamagui": "pnpm update '*tamagui*' '@tamagui/*'",
+    "upgrade:tamagui:canary": "pnpm update '*tamagui*@canary' '@tamagui/*@canary'",
+    "check-tamagui": "tamagui check",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepare": "husky"
+  },
+  "pnpm": {
+    "overrides": {
+      "react": "19.0.0",
+      "react-dom": "19.0.0",
+      "react-refresh": "^0.14.0",
+      "react-native-svg": "15.11.2",
+      "react-native-web": "~0.19.12",
+      "metro": "0.81.0",
+      "metro-resolver": "0.81.0"
+    }
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.24.6",
+    "@tamagui/cli": "^1.136.1",
+    "check-dependency-version-consistency": "^4.1.0",
+    "eslint": "^9.3.0",
+    "husky": "^9.1.6",
+    "prettier": "^3.3.3",
+    "turbo": "^1.13.4",
+    "typescript": "~5.8.3",
+    "ultra-runner": "^3.10.5",
+    "vitest": "^2.1.1"
+  },
+  "packageManager": "pnpm",
+  "engines": {
+    "node": ">=22",
+    "pnpm": ">=9"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.3"
+  }
+}
