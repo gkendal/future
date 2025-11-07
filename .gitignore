@@ -46,3 +46,10 @@ thumbs.db
 
 # turbo build log
 **/.turbo/*
+
+# use expo cng
+android
+ios
+
+# ignore dev settings
+.vscode
